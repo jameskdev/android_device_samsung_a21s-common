@@ -17,7 +17,7 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := ueventd.exynos9611.rc
+LOCAL_MODULE := ueventd.exynos850.rc
 LOCAL_SRC_FILES := ueventd.rc
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_STEM := ueventd

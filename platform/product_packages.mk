@@ -1,6 +1,6 @@
 ### AUDIO
 PRODUCT_PACKAGES += \
-    android.hardware.audio@6.0-impl:32 \
+    android.hardware.audio@5.0-impl:32 \
     android.hardware.audio.service
 
 PRODUCT_PACKAGES += \
@@ -13,7 +13,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.effect@6.0-impl:32
+    android.hardware.audio.effect@5.0-impl:32
 
 ### BLUETOOTH
 PRODUCT_PACKAGES += \
@@ -30,10 +30,16 @@ PRODUCT_PACKAGES += \
 
 ### CAMERA
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-service_64
+    android.hardware.camera.provider@2.4 \
+    android.hardware.camera.provider@2.5 \
+    android.hardware.camera.provider@2.4-legacy \
+    android.hardware.camera.provider@2.5-legacy
+
+#PRODUCT_PACKAGES += \
+#    Snap
 
 PRODUCT_PACKAGES += \
-    Snap
+    Camera2
 
 ### DRM
 PRODUCT_PACKAGES += \
@@ -80,7 +86,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service.samsung \
     libkeymaster4_1support.vendor:64
-
+    
 ### LIGHT
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.samsung
@@ -130,13 +136,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.samsung
 
-### TOUCH HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung
-
 ### USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.1-service.exynos9611
+    android.hardware.usb@1.1-service.exynos850
+    
+### VIB
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.3
 
 ### USB TRUST HAL
 PRODUCT_PACKAGES += \

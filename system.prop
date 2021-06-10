@@ -1,17 +1,20 @@
 ### SAMSUNG SPECIFIC
 ro.product_ship=true
+ro.arch=exynos850
+ro.kernel.qemu=0
+ro.kernel.qemu.gles=2
+persist.demo.hdmirotationlock=false
+
 # Set csc support in OMX
 # If not set or set to 0, OMX will only use BT.601 colorspace.
 ro.vendor.cscsupported=1
+
 # Set cmc properties
-ro.cmc.device_type=sd
+ro.cmc.device_type=pd
 ro.cmc.version=2.0
 
 ### CHARGER
 ro.charger.enable_suspend=true
-
-### KEYSTORE
-ro.security.keystore.keytype=sak,gak
 
 ### LOCKSCREEN
 lockscreen.rot_override=true
@@ -19,3 +22,15 @@ lockscreen.rot_override=true
 ### WIFI
 wifi.direct.interface=p2p0
 ro.boot.wificountrycode=00
+
+#Enable S.LSI USB settings
+dev.usbsetting.embedded=on
+
+#for DTV FullSeg SD Recording..
+oneseg.extSdCard.path=/storage/extSdCard
+
+# Set the sample rate for the BT device
+persist.bluetooth.samsung_samplerate.supported=true
+
+# Enable unspecialized app process pool
+persist.device_config.runtime_native.usap_pool_enabled=true

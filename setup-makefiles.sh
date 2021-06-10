@@ -25,7 +25,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
-write_headers "gta4xlwifi gta4xl"
+write_headers "a21s m12"
 
 # The standard common blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true

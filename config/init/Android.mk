@@ -17,37 +17,44 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := fstab.exynos9611
-LOCAL_SRC_FILES := fstab.exynos9611
+LOCAL_MODULE := fstab.exynos850
+LOCAL_SRC_FILES := fstab.exynos850
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := fstab.exynos9611_ramdisk
-LOCAL_SRC_FILES := fstab.exynos9611
+LOCAL_MODULE := fstab.sqzr
+LOCAL_SRC_FILES := fstab.sqzr
 LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_STEM := fstab.exynos9611
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := fstab.exynos850_ramdisk
+LOCAL_SRC_FILES := fstab.exynos850
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_STEM := fstab.exynos850
 LOCAL_MODULE_PATH := $(TARGET_RAMDISK_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.exynos9611.root.rc
-LOCAL_SRC_FILES := init.exynos9611.root.rc
+LOCAL_MODULE := init.exynos850.root.rc
+LOCAL_SRC_FILES := init.exynos850.root.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.exynos9611.rc
-LOCAL_SRC_FILES := init.exynos9611.rc
+LOCAL_MODULE := init.exynos850.rc
+LOCAL_SRC_FILES := init.exynos850.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.exynos9611.usb.rc
-LOCAL_SRC_FILES := init.exynos9611.usb.rc
+LOCAL_MODULE := init.exynos850.usb.rc
+LOCAL_SRC_FILES := init.exynos850.usb.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/init
 include $(BUILD_PREBUILT)

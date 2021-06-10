@@ -32,12 +32,14 @@
 /omr(/.*)?                                   u:object_r:omr_file:s0
 /optics(/.*)?                                u:object_r:optics_file:s0
 /prism(/.*)?                                 u:object_r:prism_file:s0
+/keydata(/.*)?                               u:object_r:keydata_data_file:s0
+/keyrefuge(/.*)?                             u:object_r:keyrefuge_data_file:s0
 
 ### SYSFS
 
 # Block
-/sys/devices/platform/13520000.ufs/host0/target0:0:0/0:0:0:[0-4]/block/sd[a-e]/queue/scheduler  u:object_r:sysfs_io_sched_tuneable:s0
-/sys/devices/platform/13550000.dwmmc2/mmc_host/mmc0/mmc0:aaaa/block/mmcblk0/queue/scheduler     u:object_r:sysfs_io_sched_tuneable:s0
+# /sys/devices/platform/13520000.ufs/host0/target0:0:0/0:0:0:[0-4]/block/sd[a-e]/queue/scheduler  u:object_r:sysfs_io_sched_tuneable:s0
+# /sys/devices/platform/13550000.dwmmc2/mmc_host/mmc0/mmc0:aaaa/block/mmcblk0/queue/scheduler     u:object_r:sysfs_io_sched_tuneable:s0
 
 # Camera
 /sys/devices/virtual/camera/rear/fw_update                    u:object_r:sysfs_camera_writable:s0
@@ -70,7 +72,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.clearkey                u:object_r:hal_drm_clearkey_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.widevine                u:object_r:hal_drm_widevine_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@[0-9]\.[0-9]-service\.samsung           u:object_r:hal_keymaster_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@[0-9]\.[0-9]-service\.exynos9611              u:object_r:hal_usb_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@[0-9]\.[0-9]-service\.exynos850               u:object_r:hal_usb_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@[0-9]\.[0-9]-service\.samsung            u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.gnss@[0-9]\.[0-9]-service                 u:object_r:hal_gnss_default_exec:s0
 

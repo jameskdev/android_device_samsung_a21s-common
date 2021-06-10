@@ -17,14 +17,14 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.recovery.exynos9611.rc
-LOCAL_SRC_FILES := etc/init.recovery.exynos9611.rc
+LOCAL_MODULE := init.recovery.exynos850.rc
+LOCAL_SRC_FILES := etc/init.recovery.exynos850.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(TARGET_RECOVERY_OUT)/root
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := ueventd.recovery.exynos9611.rc
+LOCAL_MODULE := ueventd.recovery.exynos850.rc
 LOCAL_SRC_FILES := etc/ueventd.rc
 LOCAL_MODULE_STEM := ueventd
 LOCAL_MODULE_SUFFIX := rc
