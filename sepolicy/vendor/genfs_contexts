@@ -57,7 +57,6 @@ genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video11/name          
 genfscon sysfs /devices/platform/acpm_mfd_bus@11A50000/i2c-10/10-0000/s2mpu12-rtc/rtc/rtc0/hctosys                       u:object_r:sysfs_rtc:s0
 genfscon sysfs /devices/system/chip-id/revision                                                                          u:object_r:sysfs_chipid:s0
 genfscon sysfs /devices/system/chip-id/board_id                                                                          u:object_r:sysfs_chipid:s0
-genfscon sysfs /devices/virtual/sec/tsp/input/enabled                                                                    u:object_r:sysfs_touchscreen_writable:s0
 
 genfscon sysfs /firmware/devicetree/base/argos                                                                           u:object_r:sysfs_argos:s0
 
