@@ -136,13 +136,6 @@ on init
     chown system system /sys/module/sec_debug/reboot_multicmd
     chmod 0400 /sys/module/sec_debug/reboot_multicmd
 
-on load_persist_props_action
-    # Enable rmnet data and aggregation
-    setprop persist.device_config.runtime_native.usap_pool_enabled true
-    setprop persist.device_config.runtime_native.usap_refill_threshold 1
-    setprop persist.device_config.runtime_native.usap_pool_size_max 2
-    setprop persist.device_config.runtime_native.usap_pool_size_min 1
-
 on early-fs
     # SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA {
     # Property to support NPA usecase. Issue tracker 141611769. 
@@ -636,9 +629,6 @@ on post-fs-data
     mkdir /data/vendor/biometrics 0770 system system
     mkdir /data/vendor/fpSnrTest 0770 system system
     # restorecon_recursive /data/vendor/biometrics
-
-on property:ro.debuggable=1 && property:ro.factory.factory_binary="" && property:persist.sys.fuse=true
-  setprop persist.sys.fuse.log true
 
 on boot
     # Memory management.  Basic kernel parameters, and allow the high
@@ -1345,7 +1335,7 @@ service bsd /system/bin/bsd
     disabled
 
 # LPM
-service lpm /system/bin/lpm
+service lpm /system/bin/charger
     class sec-charger
     user root
     group system radio input

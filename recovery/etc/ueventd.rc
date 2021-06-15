@@ -82,6 +82,9 @@ subsystem sound
 # Secure MEM driver
 /dev/s5p-smem             0660   system     system
 
+# CNSS
+/sys/class/devcoredump/devcd*    data    0660    wifi     system
+
 /*
 # USB 
 /dev/ttyGS*                 0660   system       system

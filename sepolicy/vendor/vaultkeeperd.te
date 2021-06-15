@@ -1,0 +1,9 @@
+# vaultkeeperd.te
+
+type vaultkeeperd, domain;
+type vaultkeeperd_exec, exec_type, vendor_file_type, file_type;
+
+# vaultkeeperd is started by init, type transit from init domain to cassd domain
+init_daemon_domain(vaultkeeperd)
+
+allow vaultkeeperd vaultkeeperd_exec:file { read getattr map execute open entrypoint };

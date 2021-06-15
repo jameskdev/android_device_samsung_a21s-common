@@ -18,6 +18,11 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <integer-array name="config_tether_upstream_types">
+        <item>1</item>
+        <item>7</item>
+        <item>0</item>
+    </integer-array>
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
@@ -25,18 +30,20 @@
         <item>"usb\\d"</item>
         <item>"rndis\\d"</item>
     </string-array>
-
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          Wifi interfaces.  If the device doesn't want to support tethering over Wifi this
-         should be empty.  An example would be "softap.*" -->
+         should be empty.  An example would be "softap.*" -->    
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"wlan\\d"</item>
     </string-array>
-
+    <string-array name="config_tether_wifi_p2p_regexs">
+        <item>"p2p\\d"</item>
+    </string-array>
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
         <item>"bt-pan"</item>
     </string-array>
+    <bool name="config_tether_upstream_automatic">false</bool>
 </resources>

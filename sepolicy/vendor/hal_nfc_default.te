@@ -1,0 +1,11 @@
+# hal_nfc_default.te
+init_daemon_domain(hal_nfc_default)
+
+add_hwservice(hal_nfc_default, hal_nfc_hwservice)
+
+allow hal_nfc_default sec_nfc_device:chr_file { ioctl open read write };
+allow hal_nfc_default nfc_vendor_data_file:dir search;
+allow hal_nfc_default nfc_vendor_data_file:file { open read };
+
+# vendor.nfc.fw.
+set_prop(hal_nfc_default, vendor_nfc_prop)

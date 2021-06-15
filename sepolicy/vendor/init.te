@@ -2,6 +2,8 @@
 
 allow init omr_file:dir mounton;
 allow init efs_file:dir mounton;
+allow init keydata_data_file:dir mounton;
+allow init keyrefuge_data_file:dir mounton;
 allow init mnt_vendor_file:dir mounton;
 
 allow init tmpfs:lnk_file create;
@@ -9,3 +11,5 @@ allow init tmpfs:lnk_file create;
 allow init kernel:system module_request;
 
 allow init socket_device:sock_file { create setattr unlink };
+
+allow init vaultkeeperd_exec:file { read getattr map execute open };

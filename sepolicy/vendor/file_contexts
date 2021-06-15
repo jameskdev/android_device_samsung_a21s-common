@@ -3,7 +3,12 @@
 /data/vendor/display(/.*)?                   u:object_r:display_vendor_data_file:s0
 /data/vendor/media(/.*)?                     u:object_r:media_vendor_data_file:s0
 /data/vendor/mediadrm(/.*)?                  u:object_r:mediadrm_vendor_data_file:s0
+/data/vendor/nfc(/.*)?                       u:object_r:nfc_vendor_data_file:s0
 /data/camera(/.*)?                           u:object_r:camera_data_file:s0
+
+### EFS
+/efs/vk(/.*)?                                u:object_r:vaultkeeper_efs_file:s0
+/mnt/vendor/efs/vk(/.*)?                     u:object_r:vaultkeeper_efs_file:s0
 
 ### DEV
 /dev/block/platform/.+/by-name/cpefs         u:object_r:cpefs_block_device:s0
@@ -20,6 +25,12 @@
 # Graphics
 /dev/mali[0-9]                               u:object_r:gpu_device:s0
 /dev/g2d                                     u:object_r:graphics_device:s0
+
+# NFC
+/dev/sec-nfc                                 u:object_r:sec_nfc_device:s0
+
+# RIL
+/dev/socket/vaultkeeper(/.*)?                u:object_r:vaultkeeper_socket:s0
 
 # Secmem
 /dev/s5p-smem                                u:object_r:secmem_device:s0
@@ -38,30 +49,37 @@
 ### SYSFS
 
 # Block
-# /sys/devices/platform/13520000.ufs/host0/target0:0:0/0:0:0:[0-4]/block/sd[a-e]/queue/scheduler  u:object_r:sysfs_io_sched_tuneable:s0
-# /sys/devices/platform/13550000.dwmmc2/mmc_host/mmc0/mmc0:aaaa/block/mmcblk0/queue/scheduler     u:object_r:sysfs_io_sched_tuneable:s0
+/sys/devices/platform/12100000.dwmmc0/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/scheduler     u:object_r:sysfs_io_sched_tuneable:s0
+/sys/devices/platform/13500000.dwmmc2/mmc_host/mmc1/mmc1:59b4/block/mmcblk1/queue/scheduler     u:object_r:sysfs_io_sched_tuneable:s0
 
 # Camera
 /sys/devices/virtual/camera/rear/fw_update                    u:object_r:sysfs_camera_writable:s0
 /sys/devices/virtual/camera/rear/ssrm_camera_info             u:object_r:sysfs_camera_writable:s0
 /sys/devices/virtual/camera(/.*)                              u:object_r:sysfs_camera:s0
 
+# RIL related
+/sys/devices/platform/argos(/.*)?             u:object_r:sysfs_argos:s0
+/sys/devices/platform/cpif/sim/               u:object_r:sysfs_sim:s0
+/sys/devices/platform/cpif/sim/ds_detect      u:object_r:sysfs_sim_writable:s0
+
 # Net
 /sys/devices/platform/119c0000.scsc_wifibt/net(/.*)/mtu       u:object_r:sysfs_net_mtu_writable:s0
 /sys/devices/virtual/net(/.*)/mtu                             u:object_r:sysfs_net_mtu_writable:s0
 
 # Sensors
-/sys/devices/platform/11980000.contexthub(/.*)                u:object_r:sysfs_iio:s0
-/sys/devices/platform/11c30000.adc(/.*)                       u:object_r:sysfs_iio:s0
-/sys/devices/platform/11980000.contexthub(/.*)/buffer/enable  u:object_r:sysfs_sensors_writable:s0
-/sys/devices/platform/11980000.contexthub(/.*)/buffer/length  u:object_r:sysfs_sensors_writable:s0
+/sys/devices/platform/11a00000.contexthub(/.*)                u:object_r:sysfs_iio:s0
+/sys/devices/platform/11c40000.adc(/.*)                       u:object_r:sysfs_iio:s0
 
 # GPS
 /sys/devices/soc0/machine                                     u:object_r:sysfs_sec_gps:s0
 /sys/devices/soc0/revision                                    u:object_r:sysfs_sec_gps:s0
 
 ### VENDOR
+/(vendor|system/vendor)/bin/argosd           u:object_r:argosd_exec:s0
+/(vendor|system/vendor)/bin/cass             u:object_r:cassd_exec:s0
+/system/bin/eris                             u:object_r:eris_exec:s0
 /(vendor|system/vendor)/bin/wlbtd            u:object_r:wlbtd_exec:s0
+/(vendor|system/vendor)/bin/vaultkeeperd     u:object_r:vaultkeeperd_exec:s0
 
 /(vendor|system/vendor)/bin/vendor\.samsung\.hardware\.security\.widevine\.keyprovisioning@[0-9]\.[0-9]-service    u:object_r:hal_drm_widevine_exec:s0
 
@@ -73,8 +91,10 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@[0-9]\.[0-9]-service\.widevine                u:object_r:hal_drm_widevine_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@[0-9]\.[0-9]-service\.samsung           u:object_r:hal_keymaster_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@[0-9]\.[0-9]-service\.exynos850               u:object_r:hal_usb_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@[0-9]\.[0-9]-service\.samsung            u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/hw/sec\.android\.hardware\.nfc@[0-9]\.[0-9]-service                     u:object_r:hal_nfc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.camera\.provider@[0-9]\.[0-9]-service_64  u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.gnss@[0-9]\.[0-9]-service                 u:object_r:hal_gnss_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.vibrator@[0-9]\.[0-9]-service             u:object_r:hal_vibrator_default_exec:s0
 
 /(vendor|system/vendor)/lib(64)?/hw/gralloc\.exynos[0-9]*\.so                                       u:object_r:same_process_hal_file:s0
 /(vendor|system/vendor)/lib(64)?/libion_exynos\.so                                                  u:object_r:same_process_hal_file:s0

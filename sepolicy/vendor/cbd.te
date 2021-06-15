@@ -1,3 +1,4 @@
 # cbd.te
 
 allow cbd self:capability2 block_suspend;
+get_prop(cbd, vendor_radio_prop)

@@ -14,6 +14,7 @@ type camera_vendor_data_file, file_type, data_file_type;
 type display_vendor_data_file, file_type, data_file_type;
 type media_vendor_data_file, file_type, data_file_type;
 type mediadrm_vendor_data_file, file_type, data_file_type;
+type nfc_vendor_data_file, file_type, data_file_type;
 
 # DEBUGFS
 type debugfs_mali, fs_type, debugfs_type;
@@ -24,6 +25,8 @@ type debugfs_ion_dma, fs_type, debugfs_type;
 # EFS
 type cpdebug_efs_file, fs_type;
 type mb_po_efs_file, fs_type;
+type vaultkeeper_efs_file, file_type;
+type vaultkeeper_socket, file_type;
 
 # PROC
 type proc_simslot_count, fs_type, proc_type;

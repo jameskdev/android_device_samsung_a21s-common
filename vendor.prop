@@ -5,6 +5,9 @@ aaudio.mmap_exclusive_policy=2
 aaudio.hw_burst_min_usec=2000
 af.fast_track_multiplier=1
 
+### CAMERA
+ro.camera.notify_nfc=1
+
 ### DALVIK
 dalvik.vm.lockprof.threshold=500
 
@@ -32,6 +35,8 @@ ro.frp.pst=/dev/block/persistent
 ### RIL
 vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
 ro.vendor.multisim.simslotcount=1
+persist.radio.multisim.config=ss
+ro.vendor.epdg.support=true
 
 ### SF
 ro.surface_flinger.vsync_event_phase_offset_ns=0

@@ -21,24 +21,18 @@
      entries do not follow the convention, but all new entries should. -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Default access point SSID used for tethering -->
-    <string name="wifi_tether_configure_ssid_default" translatable="false">Galaxy Tab S6 Lite</string>
-
-    <!-- Boolean indicating whether the wifi chipset has background scan support -->
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
-
-    <!-- Wifi driver supports IEEE80211AC for softap -->
-    <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">true</bool>
-
-    <!-- Enable ACS (auto channel selection) for softap -->
-    <bool translatable="false" name="config_wifi_softap_acs_supported">false</bool>
-
-    <!-- Boolean indicating whether the wifi chipset has 5GHz frequency band support -->
-    <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
-
-    <!-- True if the firmware supports connected MAC randomization -->
+    <string name="wifi_tether_configure_ssid_default" translatable="false">Galaxy A21s</string>
     <bool name="config_wifi_connected_mac_randomization_supported">true</bool>
-
-    <!-- True if the firmware supports p2p MAC randomization -->
-    <bool name="config_wifi_p2p_mac_randomization_supported">true</bool>
+    <bool name="config_wifi_fast_bss_transition_enabled">true</bool>
+    <bool name="config_wifi_p2p_mac_randomization_supported">false</bool>
+    <bool name="config_wifi_softap_acs_supported">false</bool>
+    <bool name="config_wifiSofapClientForceDisconnectSupported">false</bool>
+    <bool name="config_wifiSoftapResetChannelConfig">false</bool>
+    <bool name="config_wifiSoftapResetHiddenConfig">false</bool>
+    <bool name="config_wifiSoftapResetMaxClientSettingConfig">false</bool>
+    <bool name="config_wifi_softap_ieee80211ac_supported">true</bool>
+    <bool name="config_wifi5ghzSupport">true</bool>
+    <integer name="config_wifiHardwareSoftapMaxClientCount">10</integer>
+    <string name="config_wifiSoftap2gChannelList">1-11</string>
+    <string name="config_wifiSoftap5gChannelList">149</string>
 </resources>

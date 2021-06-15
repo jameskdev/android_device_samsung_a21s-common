@@ -122,6 +122,7 @@ PRODUCT_PACKAGES += \
 
 ### SHIMS
 PRODUCT_PACKAGES += \
+    libbauthtzcommon_shim \
     libshim_sensorndkbridge
 
 ### SOUNDTRIGGER
