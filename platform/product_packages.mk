@@ -1,6 +1,6 @@
 ### AUDIO
 PRODUCT_PACKAGES += \
-    android.hardware.audio@5.0-impl:32 \
+    android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.service
 
 PRODUCT_PACKAGES += \
@@ -13,7 +13,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio.effect@5.0-impl:32
+    android.hardware.audio.effect@6.0-impl:32
 
 ### BLUETOOTH
 PRODUCT_PACKAGES += \
