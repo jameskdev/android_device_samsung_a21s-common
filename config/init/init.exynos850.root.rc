@@ -1228,7 +1228,3 @@ service lpm /system/bin/charger
     user root
     group system radio input
     critical
-
-# Pageboostd
-on property:sys.boot_completed=1
-    mkdir /data/misc/pageboost 0771 system system
