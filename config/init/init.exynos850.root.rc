@@ -61,15 +61,6 @@ on init
     chmod 0660 /proc/avc_msg
 # ] SEC_SELINUX_PORTING_COMMON
 
-    # Samsung ODE >>>
-    mkdir /mnt/sde 0700 root root
-    # Create private mountpoint so we can MS_MOVE from staging
-    mount tmpfs tmpfs /mnt/sde mode=0700,uid=0,gid=0
-    # Directory for staging bindmounts
-    mkdir /mnt/sde/staging 0700 root root
-    restorecon_recursive /mnt/sde/staging
-    # Samsung ODE <<<
-
     # SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA {
     chmod 0660 /dev/ncm_dev
     chown system system /dev/ncm_dev
@@ -144,7 +135,6 @@ on early-fs
 
 on post-fs
     # Samsung ODE >>>
-    mount tmpfs tmpfs /mnt/sde private rec
     chown system system /keydata
     chmod 0771 /keydata
     restorecon /keydata
@@ -160,8 +150,6 @@ on post-fs
     # make fsdbg on /dev for filesystem debug info.
     mkdir /dev/fsdbg 0775 root system
 
-    start scs
-
 on post-fs-data
     mark_post_data
 
@@ -170,8 +158,6 @@ on post-fs-data
     chmod 0771 /spu
     restorecon /spu
 
-    mkdir /dev/socket/stork 0770 system system
-    start storkd
     # USB conn_gadget device (DeXonPC, Samsung Flow)
     chown system system /dev/android_ssusbcon
     chmod 0660 /dev/android_ssusbcon
@@ -188,13 +174,6 @@ on post-fs-data
     # sec_efs_file
     mkdir /efs/sec_efs 0775 radio system
 # ] SEC_SELINUX_PORTING_COMMON
-
-    # barnswallow Daemon socket
-    mkdir /dev/socket/bsd 0770 system system
-
-    # create basic filesystem structure
-    mkdir /data/log 0775 system log encryption=DeleteIfNecessary
-    mkdir /data/log/bt 0770 bluetooth bluetooth
 
     # System Performance HyPer Permission
     chown system system /sys/kernel/gpu/gpu_freq_table
@@ -219,21 +198,6 @@ on post-fs-data
     chmod 0664 /sys/class/input_booster/level
     chmod 0664 /sys/class/input_booster/head
     chmod 0664 /sys/class/input_booster/tail
-
-    # SEC_SELINUX_FRAMEWORKS_PORTING
-    mkdir /data/seams 0700 system system
-
-    # Create directory for hostapd
-    mkdir /data/misc/wifi_share_profile 0771 wifi system
-    mkdir /data/misc/wifi_hostapd 0771 wifi system
-
-    mkdir /data/log/wifi/ 0775 system root
-
-    # for WIFI Antenna
-    write /data/misc/conn/.wificable.info E
-    chown system root /data/misc/conn/.wificable.info
-    chmod 0666 /data/misc/conn/.wificable.info
-    # ] Wi-Fi init
 
 # Light Sensor
     chown system radio /sys/class/sensors/light_sensor/name
@@ -551,45 +515,6 @@ on post-fs-data
 
     # Knox AI Factory
     mkdir /efs/knoxai 0770 system log
-
-    # Samsung Theme | APK_OPTIMIZATION
-    mkdir /data/overlays 0755 system system
-
-    # APK_OPTIMIZATION
-    mkdir /data/overlays/current_locale_apks 0755 system system
-
-    # Downloadable Filter
-    mkdir /data/DownFilters             0775 system system
-    mkdir /data/DownFilters/Lib         0775 system system
-    mkdir /data/DownFilters/Lib64       0775 system system
-    mkdir /data/DownFilters/Res         0775 system system
-    mkdir /data/DownFilters/Tex         0775 system system
-    mkdir /data/DownFilters/MyFilter    0775 system system
-
-    # Video call Virtual Background
-    mkdir /data/vendor/segbackground 0771 system system encryption=Require
-
-    # UWB
-    #mkdir /data/vendor/uwb 0775 system uwb
-    #mkdir /vendor/firmware/uwb 0744 system uwb
-
-    # NFC: create data/nfc for nv storage
-    mkdir /data/nfc 0770 nfc nfc encryption=Require
-    mkdir /data/nfc/param 0770 nfc nfc
-
-    # Create all remaining /data root dirs so that they are made through init
-    # and get proper encryption policy installed
-    mkdir /data/backup 0700 system system encryption=Require
-    mkdir /data/ss 0700 system system encryption=Require
-
-    # Samsung Pass
-    mkdir /data/.fido 0700 system system encryption=Require
-
-    # TAD
-    mkdir /data/tad 0770 system system encryption=Require
-
-    # Create blockchain folder to Blockchain keystore
-    mkdir /data/sblockchain 0755 system system encryption=Require
 
 # [ SEC_SELINUX_PORTING_COMMON
     # start auditd
@@ -1295,44 +1220,7 @@ on charger
 # BATTERY
 on property:sys.boot_completed=1
     write /sys/class/power_supply/battery/boot_completed "1"
-
-on property:persist.sys.buckmode=ON
-    write /sys/class/power_supply/battery/batt_temp_control_test "1"
-
-on property:persist.sys.buckmode=OFF
     write /sys/class/power_supply/battery/batt_temp_control_test "0"
-
-on property:vold.decrypt=trigger_post_fs_data
-    start scs
-
-on property:ro.crypto.type=file && property:vold.post_fs_data_done=1
-    start scs
-
-on property:sys.sysctl.watermark_boost_factor=*
-    write /proc/sys/vm/watermark_boost_factor ${sys.sysctl.watermark_boost_factor}
-
-on property:sys.sysctl.swappiness=*
-    write /proc/sys/vm/swappiness ${sys.sysctl.swappiness}
-
-on property:sys.sysctl.mmap_readaround_limit=*
-    write /proc/sys/vm/mmap_readaround_limit ${sys.sysctl.mmap_readaround_limit}
-
-on property:sys.sysctl.fault_around_bytes=*
-    write /sys/kernel/debug/fault_around_bytes ${sys.sysctl.fault_around_bytes}
-
-# Stork Daemon
-service storkd /vendor/bin/storkd
-    class core
-    user system
-    group system
-    disabled
-
-# Barnswallow Daemon
-service bsd /system/bin/bsd
-    user system
-    group system
-    oneshot
-    disabled
 
 # LPM
 service lpm /system/bin/charger
@@ -1341,163 +1229,6 @@ service lpm /system/bin/charger
     group system radio input
     critical
 
-service scs /system/bin/scs
-    class main
-    user root
-    group root system
-    oneshot
-    disabled
-
-# strongSwan VPN
-service charon /system/bin/charon
-    class main
-    socket charon stream 600 system system
-    # charon will setuid to vpn after getting necessary resources.
-    user vpn
-    group vpn inet shell
-    capabilities NET_ADMIN NET_BIND_SERVICE NET_RAW
-    disabled
-    oneshot
-
-# Start Daemon ss_conn_daemon2 (DeXonPC, Samsung Flow)
-service ss_conn_daemon2_service /system/bin/ss_conn_daemon2
-    class main
-    socket ss_conn_daemon2 stream 0660 system system
-    user system
-    group inet net_raw
-    disabled
-
-# DeXonPC
-on property:service.dexonpc.running=1
-   write /sys/class/net/lo/queues/rx-0/rps_cpus ff
-
-on property:service.dexonpc.running=0
-   write /sys/class/net/lo/queues/rx-0/rps_cpus 0
-
-# IO Daemon
-# IOPP-iod-android-v1.0
-service iod /vendor/bin/iod
-    user system
-    group shell
-    class main
-    oneshot
-    disabled
-
-# knox_changer service
-service kap_enable /system/bin/knox_changer -e
-    seclabel u:r:kapd:s0
-    class main
-    disabled
-    oneshot
-
-service kap_disable /system/bin/knox_changer -d
-    seclabel u:r:kapd:s0
-    class main
-    disabled
-    oneshot
-
-on property:security.knox_kap_mode=true
-    start kap_enable
-
-on property:security.knox_kap_mode=false
-    start kap_disable
-
-# UCM ODE mode
-service ucs_enable /system/bin/knox_changer -u
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service ucs_disable /system/bin/knox_changer -v
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service ucs_reset /system/bin/knox_changer -w
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_ucs_mode=true
-    chmod 0655 /efs/sec_efs/odeConfig
-    start ucs_enable
-
-on property:security.knox_ucs_mode=false
-    chmod 0655 /efs/sec_efs/odeConfig
-    start ucs_disable
-
-on property:security.knox_ucs_mode=reset
-    chmod 0655 /efs/sec_efs/odeConfig
-    start ucs_reset
-
-# Network packet dropdump
-on property:sys.dropdump.on=On
-   write /proc/sys/net/core/support_dropdump 1
-
-on property:sys.dropdump.on=Off
-   write /proc/sys/net/core/support_dropdump 0
-
-## SecProductFeature_KNOX.SEC_PRODUCT_FEATURE_KNOX_SUPPORT_MDM {
-## EDM AuditLog
-service edmaudit /system/bin/edmaudit
-    class main
-    user system
-    group system
-    capabilities SYSLOG
-    disabled
-
-on property:security.edmaudit=true
-    start edmaudit
-
-on property:security.edmaudit=false
-    stop edmaudit
-## SecProductFeature_KNOX.SEC_PRODUCT_FEATURE_KNOX_SUPPORT_MDM }
-
 # Pageboostd
 on property:sys.boot_completed=1
     mkdir /data/misc/pageboost 0771 system system
-
-on property:sys.dexopt.ctrl=true
-    write /dev/cpuset/dexopt/cpus "0-3"
-
-on property:sys.dexopt.ctrl=false
-    write /dev/cpuset/dexopt/cpus "0-7"
-
-# Myfilter preload filters. If persistent property myfilter_preloaded is not set yet, then copy filter data and mark the property as done.
-on property:persist.sys.myfilter_preload=
-    copy  /system/cameradata/myfilter/myfilter_sample_01.sel /data/DownFilters/MyFilter/myfilter_sample_01.sel
-    copy  /system/cameradata/myfilter/myfilter_sample_02.sel /data/DownFilters/MyFilter/myfilter_sample_02.sel
-    copy  /system/cameradata/myfilter/myfilter_sample_03.sel /data/DownFilters/MyFilter/myfilter_sample_03.sel
-    copy  /system/cameradata/myfilter/myfilter_sample_04.sel /data/DownFilters/MyFilter/myfilter_sample_04.sel
-    copy  /system/cameradata/myfilter/myfilter_sample_01.bmp /data/DownFilters/MyFilter/myfilter_sample_01.bmp
-    copy  /system/cameradata/myfilter/myfilter_sample_02.bmp /data/DownFilters/MyFilter/myfilter_sample_02.bmp
-    copy  /system/cameradata/myfilter/myfilter_sample_03.bmp /data/DownFilters/MyFilter/myfilter_sample_03.bmp
-    copy  /system/cameradata/myfilter/myfilter_sample_04.bmp /data/DownFilters/MyFilter/myfilter_sample_04.bmp
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_01.sel
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_02.sel
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_03.sel
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_04.sel
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_01.bmp
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_02.bmp
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_03.bmp
-    chown system system /data/DownFilters/MyFilter/myfilter_sample_04.bmp
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_01.sel
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_02.sel
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_03.sel
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_04.sel
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_01.bmp
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_02.bmp
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_03.bmp
-    chmod 0664 /data/DownFilters/MyFilter/myfilter_sample_04.bmp
-    setprop persist.sys.myfilter_preload preload_done
-
-
-#//[@VOLD Prevent watchdog reset at vold shutdown
-on property:sys.vold.needed=1
-    # VOLD was not existed when VDC requested VOLD Binder.
-    # so, start it again
-    start vold
-#//@VOLD Prevent watchdog reset at vold shutdown]

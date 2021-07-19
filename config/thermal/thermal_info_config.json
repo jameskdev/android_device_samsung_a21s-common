@@ -4,12 +4,12 @@
             "Name": "LITTLE0",
             "Type": "CPU",
             "HotThreshold": [
-                "NAN",
-                "NAN",
-                "NAN",
+                76.0,
+                81.0,
+                86.0,
+                91.0,
                 96.0,
-                "NAN",
-                "NAN",
+                101.0,
                 115.0
             ],
             "VrThreshold": "NAN",
@@ -19,12 +19,12 @@
             "Name": "LITTLE1",
             "Type": "CPU",
             "HotThreshold": [
-                "NAN",
-                "NAN",
-                "NAN",
+                76.0,
+                81.0,
+                86.0,
+                91.0,
                 96.0,
-                "NAN",
-                "NAN",
+                101.0,
                 115.0
             ],
             "VrThreshold": "NAN",
@@ -34,12 +34,12 @@
             "Name": "G3D",
             "Type": "GPU",
             "HotThreshold": [
-                "NAN",
-                "NAN",
-                "NAN",
+                76.0,
+                81.0,
+                86.0,
+                91.0,
                 96.0,
-                "NAN",
-                "NAN",
+                101.0,
                 115.0
             ],
             "VrThreshold": "NAN",
@@ -54,7 +54,7 @@
                 "NAN",
                 "NAN",
                 "NAN",
-                "60.0",
+                60.0,
                 "NAN"
             ],
             "HotHysteresis": [

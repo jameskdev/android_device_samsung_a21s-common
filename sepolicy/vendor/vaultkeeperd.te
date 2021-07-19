@@ -6,4 +6,18 @@ type vaultkeeperd_exec, exec_type, vendor_file_type, file_type;
 # vaultkeeperd is started by init, type transit from init domain to cassd domain
 init_daemon_domain(vaultkeeperd)
 
+allow vaultkeeperd init:unix_stream_socket connectto;
+
+allow vaultkeeperd block_device:dir search;
+allow vaultkeeperd steady_block_device:blk_file rw_file_perms;
+allow vaultkeeperd property_socket:sock_file write;
+
 allow vaultkeeperd vaultkeeperd_exec:file { read getattr map execute open entrypoint };
+allow vaultkeeperd kmsg_device:chr_file getattr;
+allow vaultkeeperd tz_user_device:chr_file { ioctl open read write };
+allow vaultkeeperd vaultkeeper_socket:dir { add_name search write };
+allow vaultkeeperd vaultkeeper_socket:sock_file { create setattr };
+
+get_prop(vaultkeeperd, vendor_factory_prop);
+set_prop(vaultkeeperd, vendor_sec_vaultkeeper_prop);
+set_prop(vaultkeeperd, vendor_tztsdaemon_prop);

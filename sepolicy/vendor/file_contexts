@@ -5,13 +5,17 @@
 /data/vendor/mediadrm(/.*)?                  u:object_r:mediadrm_vendor_data_file:s0
 /data/vendor/nfc(/.*)?                       u:object_r:nfc_vendor_data_file:s0
 /data/camera(/.*)?                           u:object_r:camera_data_file:s0
+/data/nfc(/.*)?                              u:object_r:nfc_data_file:s0
 
 ### EFS
+/efs/FactoryApp(/.*)?                        u:object_r:app_efs_file:s0
+/mnt/vendor/efs/FactoryApp(/.*)?             u:object_r:app_efs_file:s0
 /efs/vk(/.*)?                                u:object_r:vaultkeeper_efs_file:s0
 /mnt/vendor/efs/vk(/.*)?                     u:object_r:vaultkeeper_efs_file:s0
 
 ### DEV
 /dev/block/platform/.+/by-name/cpefs         u:object_r:cpefs_block_device:s0
+/dev/block/platform/.+/by-name/steady        u:object_r:steady_block_device:s0
 
 # Bluetooth
 /dev/scsc_h4_0                               u:object_r:bt_device:s0
@@ -26,6 +30,9 @@
 /dev/mali[0-9]                               u:object_r:gpu_device:s0
 /dev/g2d                                     u:object_r:graphics_device:s0
 
+# MMC RPMB
+/dev/mmcblk0rpmb                             u:object_r:mmc_rpmb_char_device:s0
+
 # NFC
 /dev/sec-nfc                                 u:object_r:sec_nfc_device:s0
 
@@ -37,6 +44,7 @@
 
 # ZRAM
 /dev/block/zram0                             u:object_r:swap_block_device:s0
+/data/per_boot(/.*)?                         u:object_r:per_boot_file:s0
 
 ### ROOT
 /dqmdbg(/.*)?                                u:object_r:dqmdbg_file:s0
@@ -53,6 +61,7 @@
 /sys/devices/platform/13500000.dwmmc2/mmc_host/mmc1/mmc1:59b4/block/mmcblk1/queue/scheduler     u:object_r:sysfs_io_sched_tuneable:s0
 
 # Camera
+/sys/devices/virtual/camera/flash/rear_flash                  u:object_r:sysfs_camera_writable:s0
 /sys/devices/virtual/camera/rear/fw_update                    u:object_r:sysfs_camera_writable:s0
 /sys/devices/virtual/camera/rear/ssrm_camera_info             u:object_r:sysfs_camera_writable:s0
 /sys/devices/virtual/camera(/.*)                              u:object_r:sysfs_camera:s0
@@ -69,6 +78,8 @@
 # Sensors
 /sys/devices/platform/11a00000.contexthub(/.*)                u:object_r:sysfs_iio:s0
 /sys/devices/platform/11c40000.adc(/.*)                       u:object_r:sysfs_iio:s0
+/sys/devices/platform/11a00000.contexthub(/.*)/buffer/enable  u:object_r:sysfs_sensors_writable:s0
+/sys/devices/platform/11a00000.contexthub(/.*)/buffer/length  u:object_r:sysfs_sensors_writable:s0
 
 # GPS
 /sys/devices/soc0/machine                                     u:object_r:sysfs_sec_gps:s0

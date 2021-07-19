@@ -9,6 +9,7 @@ allow hal_graphics_composer_default vendor_surfaceflinger_vndservice:service_man
 allow hal_graphics_composer_default self:netlink_kobject_uevent_socket { create bind read setopt };
 
 allow hal_graphics_composer_default graphics_device:chr_file rw_file_perms;
+allow hal_graphics_composer_default video_device:chr_file rw_file_perms;
 
 allow hal_graphics_composer_default log_vendor_data_file:dir { rw_file_perms add_name search };
 allow hal_graphics_composer_default log_vendor_data_file:file { rw_file_perms create };

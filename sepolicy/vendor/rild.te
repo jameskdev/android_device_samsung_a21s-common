@@ -1,0 +1,10 @@
+# rild.te
+
+allow rild cassd:dir search;
+allow rild cassd:file { getattr open read };
+
+allow rild tun_device:chr_file rw_file_perms;
+allowxperm rild tun_device:chr_file ioctl { 0x54ca 0x54cb };
+allow rild self:tun_socket { create relabelfrom relabelto };
+
+get_prop(rild, vendor_product_ship_prop)

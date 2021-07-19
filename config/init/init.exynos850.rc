@@ -114,6 +114,24 @@ on init
     chown system system /dev/cpuset/tasks
     chown system system /dev/cpuset/cgroup.procs
     chmod 0664 /dev/cpuset/tasks
+    
+    # for power hal
+    chown system radio /dev/cluster0_freq_min
+    chown system radio /dev/cluster0_freq_max
+    chown system radio /dev/cluster1_freq_min
+    chown system radio /dev/cluster1_freq_max
+    chown system radio /dev/cluster2_freq_min
+    chown system radio /dev/cluster2_freq_max
+    chown system radio /dev/cpu_dma_latency
+    chown system radio /dev/stune/top-app/schedtune.boost
+    chmod 0664 /dev/cluster0_freq_min
+    chmod 0664 /dev/cluster0_freq_max
+    chmod 0664 /dev/cluster1_freq_min
+    chmod 0664 /dev/cluster1_freq_max
+    chmod 0664 /dev/cluster2_freq_min
+    chmod 0664 /dev/cluster2_freq_max
+    chmod 0664 /dev/cpu_dma_latency
+    chmod 0664 /dev/stune/top-app/schedtune.boost
 
     chown system system /sys/kernel/ems/emstune/req_mode
     chmod 0664 /sys/kernel/ems/emstune/req_mode
@@ -179,22 +197,7 @@ on post-fs-data
 # TEEGRIS service
     mkdir /data/vendor/tee 0700 system system
 
-# Exynos Data folder
-    mkdir /data/exynos 0771 root system
-    mkdir /data/exynos/log 0771 root system
-    mkdir /data/exynos/log/cbd 0771 root system
-    mkdir /data/exynos/log/dmd 0771 root system
-    mkdir /data/exynos/log/dump 0771 radio system
-    mkdir /data/exynos/log/rild 0771 root system
-    mkdir /data/exynos/log/sced 0771 root system
-    mkdir /data/exynos/log/slog 0771 system system
-    mkdir /data/exynos/log/vcd 0771 root system
-    mkdir /data/exynos/log/chub 0771 root system
-    mkdir /data/exynos/gnss 0771 system system
-    mkdir /data/exynos/gnss/gps 0771 system system
-
 # Log data folder
-    mkdir /data/exynos/log 0771 radio system
     mkdir /data/vendor 0771 root system
     mkdir /data/vendor/log 0771 root system
     mkdir /data/vendor/log/abox 0771 audioserver system
@@ -464,7 +467,6 @@ on fs
     # We need to seperate mounting SEC_EFS partition from fstab file due to GSI image loading case
     wait /dev/block/platform/12100000.dwmmc0/by-name/sec_efs
     mount ext4 /dev/block/platform/12100000.dwmmc0/by-name/sec_efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic
-    setprop ro.crypto.fuse_sdcard true
 
     wait /dev/block/by-name/spu
     mount ext4 /dev/block/by-name/spu /spu nosuid nodev noatime noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic
