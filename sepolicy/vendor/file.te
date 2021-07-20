@@ -34,7 +34,6 @@ type per_boot_file, file_type, data_file_type, core_data_file_type;
 # PROC
 type proc_simslot_count, fs_type, proc_type;
 type proc_swappiness, fs_type, proc_type;
-type proc_last_kmsg, fs_type, proc_type;
 
 # SYSFS
 type sysfs_camera, sysfs_type, r_fs_type, fs_type;

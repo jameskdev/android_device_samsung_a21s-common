@@ -5,7 +5,6 @@ allow init efs_file:dir mounton;
 allow init keydata_data_file:dir mounton;
 allow init keyrefuge_data_file:dir mounton;
 allow init mnt_vendor_file:dir mounton;
-allow init proc_last_kmsg:file setattr;
 allow init self:capability sys_nice;
 
 allow init tmpfs:lnk_file create;
