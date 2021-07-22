@@ -20,7 +20,6 @@ ro.charger.enable_suspend=true
 lockscreen.rot_override=true
 
 ### WIFI
-wifi.direct.interface=p2p0
 ro.boot.wificountrycode=00
 
 #Enable S.LSI USB settings
