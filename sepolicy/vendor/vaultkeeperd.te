@@ -12,12 +12,36 @@ allow vaultkeeperd block_device:dir search;
 allow vaultkeeperd steady_block_device:blk_file rw_file_perms;
 allow vaultkeeperd property_socket:sock_file write;
 
+allow vaultkeeperd self:capability { setgid setuid };
+
+allow vaultkeeperd efs_file:dir { ioctl read write getattr lock open watch watch_reads add_name search };
+allow vaultkeeperd sec_poc_file:dir { ioctl read write getattr lock open watch watch_reads add_name search };
+allow vaultkeeperd vaultkeeper_efs_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow vaultkeeperd vaultkeeper_efs_file:dir { ioctl read write create getattr setattr lock rename open watch watch_reads add_name remove_name reparent search rmdir };
+
+allow vaultkeeperd tzdaemon:binder { call transfer };
+
+allow vaultkeeperd tee_vendor_data_file:dir { ioctl read getattr lock open watch watch_reads search };
+allow vaultkeeperd tee_vendor_data_file:file { ioctl read getattr lock map open watch watch_reads };
+allow vaultkeeperd tee_vendor_data_file:lnk_file { ioctl read getattr lock map open watch watch_reads };
+
 allow vaultkeeperd vaultkeeperd_exec:file { read getattr map execute open entrypoint };
-allow vaultkeeperd kmsg_device:chr_file getattr;
-allow vaultkeeperd tz_user_device:chr_file { ioctl open read write };
-allow vaultkeeperd vaultkeeper_socket:dir { add_name search write };
-allow vaultkeeperd vaultkeeper_socket:sock_file { create setattr };
+allow vaultkeeperd kmsg_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vaultkeeperd tz_user_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vaultkeeperd vaultkeeper_socket:dir { ioctl read write getattr lock open watch watch_reads add_name remove_name search };
+allow vaultkeeperd vaultkeeper_socket:sock_file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+
+allow vaultkeeperd log_vendor_data_file:file { ioctl read write create getattr setattr lock append map unlink rename open watch watch_reads };
+allow vaultkeeperd vendor_shell_exec:file { ioctl read getattr lock map execute open watch watch_reads execute_no_trans };
+allow vaultkeeperd vendor_toolbox_exec:file { ioctl read getattr lock map execute open watch watch_reads execute_no_trans };
+allow vaultkeeperd vendor_file:file { ioctl read getattr lock map execute open watch watch_reads execute_no_trans };
+allow vaultkeeperd proc_version:file { ioctl read getattr lock map open watch watch_reads };
+allow vaultkeeperd kernel:system { syslog_read };
+
+allow vaultkeeperd tzdaemon:fd { use };
+allow vaultkeeperd tee_efs_file:dir { search };
 
 get_prop(vaultkeeperd, vendor_factory_prop);
+get_prop(vaultkeeperd, vendor_tzdaemon_prop);
 set_prop(vaultkeeperd, vendor_sec_vaultkeeper_prop);
 set_prop(vaultkeeperd, vendor_tztsdaemon_prop);

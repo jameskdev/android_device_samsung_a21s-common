@@ -25,7 +25,6 @@ vendor.security.vaultkeeper.     u:object_r:vendor_sec_vaultkeeper_prop:s0
 ro.vendor.security.vaultkeeper.  u:object_r:vendor_sec_vaultkeeper_prop:s0
 ro.product_ship                  u:object_r:vendor_product_ship_prop:s0
 
-
 # SENSORS
 persist.sns.camera_light         u:object_r:vendor_sensors_prop:s0
 

@@ -25,6 +25,7 @@ type debugfs_ion_dma, fs_type, debugfs_type;
 # EFS
 type cpdebug_efs_file, fs_type;
 type mb_po_efs_file, fs_type;
+type sec_poc_file, file_type;
 type vaultkeeper_efs_file, file_type;
 type vaultkeeper_socket, file_type;
 

@@ -14,6 +14,8 @@
 /mnt/vendor/efs/vk(/.*)?                     u:object_r:vaultkeeper_efs_file:s0
 /efs/cpdebug(/.*)?                           u:object_r:cpdebug_efs_file:s0
 /mnt/vendor/efs/cpdebug(/.*)?                u:object_r:cpdebug_efs_file:s0
+/efs/etc/poc(/.*)?                           u:object_r:sec_poc_file:s0
+/mnt/vendor/efs/etc/poc(/.*)?                u:object_r:sec_poc_file:s0
 
 ### DEV
 /dev/block/platform/.+/by-name/cpefs         u:object_r:cpefs_block_device:s0

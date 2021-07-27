@@ -6,3 +6,4 @@ allow tzdaemon mnt_vendor_file:dir search;
 
 allow tzdaemon tee_efs_file:dir { rw_file_perms add_name create rmdir remove_name };
 allow tzdaemon tee_efs_file:file { rw_file_perms create rename unlink };
+allow tzdaemon vaultkeeperd:binder { transfer };

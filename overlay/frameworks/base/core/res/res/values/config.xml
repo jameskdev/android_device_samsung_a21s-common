@@ -29,10 +29,6 @@
          format is UMTS|LTE|... -->
     <string translatable="false" name="config_radio_access_family">GSM|CDMA|EVDO|WCDMA|LTE</string>
 
-    <!-- Flag indicating whether we should enable the automatic brightness.
-         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-    <bool name="config_automatic_brightness_available">true</bool>
-
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
