@@ -30,6 +30,11 @@ genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-charger/power
 genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-charger/power_supply/otg/online                       u:object_r:sysfs_battery:s0
 genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-charger/power_supply/s2mu106-charger/type             u:object_r:sysfs_battery:s0
 genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-charger/power_supply/s2mu106-charger/online           u:object_r:sysfs_battery:s0
+genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-haptic/leds/vibrator/activate                         u:object_r:sysfs_vibrator:s0                     
+genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-haptic/leds/vibrator/brightness                       u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-haptic/leds/vibrator/duration                         u:object_r:sysfs_vibrator:s0                      
+genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-haptic/leds/vibrator/state                            u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-haptic/leds/vibrator/trigger                          u:object_r:sysfs_vibrator:s0
 genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-powermeter/power_supply/s2mu106_pmeter/type           u:object_r:sysfs_battery:s0
 genfscon sysfs /devices/platform/13830000.i2c/i2c-0/0-003d/s2mu106-powermeter/power_supply/s2mu106_pmeter/online         u:object_r:sysfs_battery:s0
 genfscon sysfs /devices/platform/samsung_mobile_device/samsung_mobile_device:battery/power_supply/ac/type                u:object_r:sysfs_battery:s0
@@ -53,7 +58,8 @@ genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video8/name           
 genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video9/name                                                    u:object_r:sysfs_v4l:s0
 genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video10/name                                                   u:object_r:sysfs_v4l:s0
 genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video11/name                                                   u:object_r:sysfs_v4l:s0
-genfscon sysfs /devices/platform/acpm_mfd_bus@11A50000/i2c-10/10-0000/s2mpu12-rtc/rtc/rtc0/hctosys                       u:object_r:sysfs_rtc:s0
+genfscon sysfs /devices/platform/acpm_mfd_bus@11A50000/i2c-10/10-0000/s2mpu12-rtc/rtc/rtc0/hctosys                       u:object_r:sysfs_rtc:s0                                               
+
 genfscon sysfs /devices/system/chip-id/revision                                                                          u:object_r:sysfs_chipid:s0
 genfscon sysfs /devices/system/chip-id/board_id                                                                          u:object_r:sysfs_chipid:s0
 

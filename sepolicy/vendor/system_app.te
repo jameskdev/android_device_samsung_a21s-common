@@ -1,0 +1,5 @@
+# system_app.te
+
+allow system_app proc_pagetypeinfo:file read;
+allow system_app proc_vmallocinfo:file read;
+allow system_app sysfs_zram:dir search;
