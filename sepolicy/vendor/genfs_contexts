@@ -58,7 +58,9 @@ genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video8/name           
 genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video9/name                                                    u:object_r:sysfs_v4l:s0
 genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video10/name                                                   u:object_r:sysfs_v4l:s0
 genfscon sysfs /devices/platform/12c80000.mfc/video4linux/video11/name                                                   u:object_r:sysfs_v4l:s0
-genfscon sysfs /devices/platform/acpm_mfd_bus@11A50000/i2c-10/10-0000/s2mpu12-rtc/rtc/rtc0/hctosys                       u:object_r:sysfs_rtc:s0                                               
+genfscon sysfs /devices/platform/acpm_mfd_bus@11A50000/i2c-10/10-0000/s2mpu12-rtc/rtc/rtc0/hctosys                       u:object_r:sysfs_rtc:s0
+genfscon sysfs /devices/virtual/sec/sec-ap-thermistor/temp_adc                                                           u:object_r:sysfs_thermal:s0
+genfscon sysfs /devices/virtual/sec/sec-ap-thermistor/temperature                                                        u:object_r:sysfs_thermal:s0
 
 genfscon sysfs /devices/system/chip-id/revision                                                                          u:object_r:sysfs_chipid:s0
 genfscon sysfs /devices/system/chip-id/board_id                                                                          u:object_r:sysfs_chipid:s0

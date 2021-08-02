@@ -67,11 +67,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.graphics.mapper@2.0-impl-2.1
 
-### HEALTH
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl:64 \
-    android.hardware.health@2.1-service
-
 ### HIDL
 PRODUCT_PACKAGES += \
    libhidltransport \
@@ -128,10 +123,6 @@ PRODUCT_PACKAGES += \
 ### TETHERING
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay
-
-### THERMAL
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.samsung
 
 ### USB
 PRODUCT_PACKAGES += \
