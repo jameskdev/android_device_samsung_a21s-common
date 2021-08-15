@@ -543,9 +543,13 @@ on fs
 # Sensors permissions
 # FactoryApp(SensorHub)
     chown root system /efs/FactoryApp/baro_delta
+    chmod 0660 /efs/FactoryApp/baro_delta
     chown root system /efs/FactoryApp/gyro_cal_data
+    chmod 0660 /efs/FactoryApp/gyro_cal_data
     chown root system /efs/FactoryApp/cal_data
+    chmod 0660 /efs/FactoryApp/cal_data
     chown root system /efs/FactoryApp/mag_cal_data
+    chmod 0660 /efs/FactoryApp/mag_cal_data
 
 # Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
