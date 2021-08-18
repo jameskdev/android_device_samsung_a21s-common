@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5-legacy
 
 PRODUCT_PACKAGES += \
-    Snap
+    Camera2
 
 ### DRM
 PRODUCT_PACKAGES += \

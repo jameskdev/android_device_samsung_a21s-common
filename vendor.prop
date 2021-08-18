@@ -5,9 +5,6 @@ aaudio.mmap_exclusive_policy=2
 aaudio.hw_burst_min_usec=2000
 af.fast_track_multiplier=1
 
-### CAMERA
-ro.camera.notify_nfc=1
-
 ### DALVIK
 dalvik.vm.lockprof.threshold=500
 
@@ -26,7 +23,6 @@ debug.hwc.winupdate=1
 # Disable backpressure propagation
 debug.sf.disable_backpressure=1
 debug.sf.latch_unsignaled=1
-ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
 ### DEVELOPER SETTINGS
 # Disable invocation of oem_lock
