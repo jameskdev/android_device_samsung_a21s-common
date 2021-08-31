@@ -278,6 +278,16 @@
         <fqname>@2.2::ISehVibrator/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.samsung_slsi.hardware.ExynosHWCServiceTW</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IExynosHWCServiceTW</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IExynosHWCServiceTW/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.samsung_slsi.hardware.configstore</name>
         <transport>hwbinder</transport>
         <version>1.0</version>

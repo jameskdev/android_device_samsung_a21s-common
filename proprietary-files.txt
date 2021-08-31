@@ -100,6 +100,11 @@ vendor/lib64/vendor.samsung.hardware.gnss@2.0.so
 vendor/lib/egl/libGLES_mali.so
 vendor/lib64/egl/libGLES_mali.so
 
+# HWC
+vendor/bin/hw/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0-service
+vendor/etc/init/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0-service.rc
+vendor/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
+
 # ION
 vendor/lib/libion_exynos.so
 vendor/lib64/libion_exynos.so
