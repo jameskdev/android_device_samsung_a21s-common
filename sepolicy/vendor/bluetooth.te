@@ -1,3 +1,0 @@
-# bluetooth.te
-
-binder_call(bluetooth, gpuservice);

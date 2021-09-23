@@ -1,6 +1,0 @@
-# vold.te
-
-allow vold efs_file:dir r_file_perms;
-allow vold mnt_vendor_file:dir r_file_perms;
-allow vold keydata_data_file:dir r_file_perms;
-allow vold keyrefuge_data_file:dir r_file_perms;

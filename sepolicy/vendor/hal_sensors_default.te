@@ -1,5 +1,0 @@
-# hal_sensors_default.te
-
-set_prop(hal_sensors_default, vendor_sensors_prop);
-
-allow hal_sensors_default efs_file:file r_file_perms;

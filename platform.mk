@@ -15,9 +15,9 @@
 #
 
 ### PROPRIETARY VENDOR FILES
-$(call inherit-product, vendor/samsung/universal3830-common/universal3830-common-vendor.mk)
+$(call inherit-product, vendor/samsung/a21s-common/a21s-common-vendor.mk)
 
-PLATFORM_PATH := device/samsung/universal3830-common
+PLATFORM_PATH := device/samsung/a21s-common
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal

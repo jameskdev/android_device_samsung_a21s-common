@@ -30,8 +30,6 @@ ro.frp.pst=/dev/block/persistent
 
 ### RIL
 vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so
-ro.vendor.multisim.simslotcount=1
-persist.radio.multisim.config=ss
 ro.vendor.epdg.support=true
 
 ### SF

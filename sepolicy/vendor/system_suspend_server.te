@@ -1,3 +1,0 @@
-# system_suspend.te
-
-allow system_suspend_server hal_thermal_default:binder transfer;

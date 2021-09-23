@@ -1,4 +1,0 @@
-# gmscore_app.te
-
-dontaudit gmscore_app hal_memtrack_hwservice:hwservice_manager find;
-dontaudit gmscore_app hal_memtrack_default:binder call;

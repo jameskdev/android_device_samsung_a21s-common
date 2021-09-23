@@ -15,7 +15,7 @@
 
 BUILD_TOP := $(shell pwd)
 
-PLATFORM_PATH := device/samsung/universal3830-common
+PLATFORM_PATH := device/samsung/a21s-common
 
 ### BOARD
 TARGET_BOARD_PLATFORM := universal3830
@@ -51,8 +51,9 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)/releasetools
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/hardware/include
 
 ### KERNEL
-TARGET_KERNEL_SOURCE = kernel/samsung/universal3830-common/
+TARGET_KERNEL_SOURCE = kernel/samsung/a21s-common/
 TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CONFIG := exynos850-a21snsxx_defconfig
 
 BOARD_CUSTOM_BOOTIMG         := true
 BOARD_CUSTOM_BOOTIMG_MK      := $(PLATFORM_PATH)/kernel/mkbootimg.mk
@@ -63,7 +64,7 @@ BOARD_KERNEL_PAGESIZE        := 2048
 BOARD_KERNEL_IMAGE_NAME      := Image
 # Build a device tree overlay
 BOARD_KERNEL_SEPARATED_DTBO  := true
-BOARD_DTBO_CFG               := $(PLATFORM_PATH)/kernel/$(TARGET_DEVICE).cfg
+BOARD_DTBO_CFG               := $(PLATFORM_PATH)/kernel/$(PRODUCT_NAME).cfg
 
 # See `bbootimg -i boot.img`
 BOARD_DTB_OFFSET             := 0x00000000
@@ -91,13 +92,15 @@ BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 AB_OTA_UPDATER := false
 
 BOARD_ROOT_EXTRA_FOLDERS := \
+    carrier \
     efs \
-    dqmdbg \
-    omr \
-    prism \
     keydata \
     keyrefuge \
-    optics
+    omr \
+    optics \
+    prism \
+    res \
+    spu
 
 # /metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -139,10 +142,8 @@ TARGET_KEYMASTER_VARIANT := samsung
 ### SEPOLICY
 include device/lineage/sepolicy/exynos/sepolicy.mk
 
-BOARD_SEPOLICY_TEE_FLAVOR := teegris
-include device/samsung_slsi/sepolicy/sepolicy.mk
-
-BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
+BOARD_SEPOLICY_LINEAGE_OS := true
+include device/samsung/a21s-sepolicy/a21s-sepolicy.mk
 
 ### PROPERTIES
 TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/system.prop

@@ -1,29 +1,5 @@
 # Common proprietary files - from Samsung package version A217NKSU5CUD3, unless pinned
 
-### AUDIO
-vendor/etc/audio_board_info.xml
-vendor/etc/default_volume_tables.xml
-vendor/etc/mixer_paths.xml
-vendor/etc/usb_audio_policy_configuration.xml
-vendor/lib/vndk/libtinyalsa.so
-vendor/lib/vndk/libaudioroute.so
-vendor/lib/libSamsungPostProcessConvertor.so
-vendor/lib/lib_SamsungRec_07001.so
-vendor/lib/lib_SoundAlive_SRC384_ver320.so
-vendor/lib/lib_soundaliveresampler.so
-vendor/lib/libaboxpcmdump.so
-vendor/lib/libalsautils_sec.so
-vendor/lib/libaudioproxy.so
-vendor/lib/libdatamod.so
-vendor/lib/libfloatingfeature.so
-vendor/lib/liblastaboxmsg.so
-vendor/lib/librecordalive.so
-vendor/lib/libsecaudioinfo.so
-vendor/lib/soundfx/libaudioeffectoffload.so
-vendor/lib64/libfloatingfeature.so
-vendor/lib64/libsecaudioinfo.so
-vendor/lib64/soundfx/libaudioeffectoffload.so
-
 ### CAMERA
 vendor/etc/init/vendor.samsung.hardware.camera.provider@4.0-service_64.rc
 vendor/bin/hw/vendor.samsung.hardware.camera.provider@4.0-service_64
@@ -137,20 +113,6 @@ vendor/lib64/omx/libOMX.Exynos.MPEG4.Encoder.so
 vendor/lib64/omx/libOMX.Exynos.VP8.Decoder.so
 vendor/lib64/omx/libOMX.Exynos.VP8.Encoder.so
 vendor/lib64/omx/libOMX.Exynos.WMV.Decoder.so
-
-### SECNATIVE
-vendor/lib/libsecnativefeature.so
-vendor/lib64/libsecnativefeature.so
-
-### TEEGRIS
-vendor/bin/tzdaemon
-vendor/bin/tzts_daemon
-vendor/etc/init/teegris_v4.rc
-vendor/lib/libuuid.so
-vendor/lib/libteecl.so
-vendor/lib64/libiwt.so
-vendor/lib64/libteecl.so
-vendor/lib64/libuuid.so
 
 ### SAMSUNG_SLSI_HWC
 vendor/lib64/hw/hwcomposer.exynos850.so
