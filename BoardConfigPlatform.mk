@@ -64,11 +64,7 @@ BOARD_KERNEL_PAGESIZE        := 2048
 BOARD_KERNEL_IMAGE_NAME      := Image
 # Build a device tree overlay
 BOARD_KERNEL_SEPARATED_DTBO  := true
-ifeq ($(PRODUCT_PDA_MODEL),A217N)
-BOARD_DTBO_CFG               := $(PLATFORM_PATH)/kernel/a21sks.cfg
-else if ($(PRODUCT_PDA_MODEL),A217F)
-BOARD_DTBO_CFG               := $(PLATFORM_PATH)/kernel/a21snsxx.cfg
-endif
+BOARD_DTBO_CFG               := $(PLATFORM_PATH)/kernel/$(TARGET_DEVICE).cfg
 
 # See `bbootimg -i boot.img`
 BOARD_DTB_OFFSET             := 0x00000000
